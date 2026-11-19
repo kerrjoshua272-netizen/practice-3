@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalila Roberts | Interior Design Portfolio</title>
+    <style>
+        :root {
+            --primary: #0099C6;
+            --primary-dark: #00779E;
+            --text-main: #0F172A;
+            --text-muted: #475569;
+            --bg-body: #F7FBFC;
+            --bg-card: #FFFFFF;
+            --border-color: #CBD5E1;
+            --accent-blush: #E2F3F8;
+            --font-family: 'Times New Roman', Times, serif;
+        }
+
+        [data-theme="dark"] {
+            --primary: #33ABCE;
+            --primary-dark: #0099C6;
+            --text-main: #F1F5F9;
+            --text-muted: #94A3B8;
+            --bg-body: #0B131A;
+            --bg-card: #131F2A;
+            --border-color: #2D3E50;
+            --accent-blush: #162A38;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg-body);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-badge {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: normal;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .btn-theme {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.5rem 0.9rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: var(--font-family);
+            font-size: 0.9rem;
+        }
+
+        .btn-theme:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: normal;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        .hero-statement {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-style: italic;
+            border-left: 3px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            font-family: var(--font-family);
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            border: 1px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Hero Card */
+        .hero-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 153, 198, 0.08);
+            position: relative;
+        }
+
+        .hero-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .school-badge-box {
+            background-color: var(--accent-blush);
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            font-weight: bold;
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: normal;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-card h4 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+            font-weight: normal;
+        }
+
+        .stat-card span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-header-banner {
+            background-color: var(--accent-blush);
+            padding: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .project-header-banner h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-date {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .project-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-body p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background-color: var(--accent-blush);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .project-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+        }
+
+        /* Resume Section */
+        .resume-container {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .resume-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.75rem;
+        }
+
+        .resume-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: normal;
+        }
+
+        .resume-section-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin: 2rem 0 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .resume-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .resume-item-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.25rem;
+            font-weight: bold;
+        }
+
+        .resume-item-sub {
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-list {
+            padding-left: 1.25rem;
+            color: var(--text-muted);
+        }
+
+        .resume-list li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* Contact Section */
+        .contact-box {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-box p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.85rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            font-size: 1rem;
+        }
+
+        .form-status {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: var(--primary);
+            font-weight: bold;
+            min-height: 1.4rem;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            width: 90%;
+            max-width: 800px;
+            max-height: 85vh;
+            border-radius: 12px;
+            padding: 2.5rem;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+
+        .modal-section-heading {
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-size: 1.15rem;
+            font-weight: bold;
+        }
+
+        .modal-list {
+            padding-left: 1.25rem;
+            color: var(--text-muted);
+        }
+
+        .modal-list li {
+            margin-bottom: 0.45rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media(max-width: 768px) {
+            .hero { grid-template-columns: 1fr; padding-top: 8rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .resume-container, .contact-box { padding: 2rem 1.5rem; }
+            .resume-item-header { flex-direction: column; gap: 0.15rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">KR. <span class="logo-badge">St. John's College</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-theme" onclick="toggleTheme()">🌓 Theme</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Kalila Roberts<br><span>Interior Design</span></h1>
+            <p class="hero-subtitle">St. John's College • Class of 2027 • Nassau, The Bahamas</p>
+            <p class="hero-statement">"A proactive dedicated student that thrives off of curiosity combines creative vision with execution."</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#resume" class="btn btn-outline">View Resume</a>
+            </div>
+        </div>
+        <div class="hero-card">
+            <h3>Kalila Roberts</h3>
+            <p>Aspiring Interior Architecture &amp; Spatial Design Student</p>
+            <div class="school-badge-box">
+                📍 Nassau, The Bahamas<br>St. John's College (Age 16)
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">Blending Bahamian heritage with functional spatial storytelling</p>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>I’m Kalila Roberts, a 16-year-old Bahamian girl that attends St. John’s College. I hope to pursue a Bachelor of Fine Arts in Interior Design. Growing up, I had very little exposure to art, but I was enlightened by the little bits I was exposed to.</p>
+                <p>The art I was exposed to was my uncle's art on the walls of my house and Junkanoo, which is a cultural and community-driven festival. It’s driven through rhythmic sounds, music, and dance with an eccentric display of colors built from repurposing discarded or reused items. I thrive on curiosity and creativity—I’m always deep in my “what if” and “I wonder why” thoughts.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h4>16</h4>
+                    <span>Age</span>
+                </div>
+                <div class="stat-card">
+                    <h4>2027</h4>
+                    <span>Graduation Year</span>
+                </div>
+                <div class="stat-card">
+                    <h4>AutoCAD</h4>
+                    <span>Drafting Proficiency</span>
+                </div>
+                <div class="stat-card">
+                    <h4>BFA</h4>
+                    <span>Target Degree Focus</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Design Projects</h2>
+        <p class="section-subtitle">AutoCAD floor plans, mood boards, finishes, and furniture selections from my coursework</p>
+
+        <div class="projects-grid">
+            <!-- Project 1: My Ethereal Dream Bedroom -->
+            <div class="project-card">
+                <div class="project-header-banner">
+                    <h3>My Ethereal Dream Bedroom</h3>
+                    <span class="project-date">26/10/2026</span>
+                </div>
+                <div class="project-body">
+                    <p>Designed as an escape where soft luxury meets calm beauty, pairing soothing plaster white, soft champagne, and twilight tones with Supernova N510-4 wall paint, an AutoCAD primary suite layout, and curated finishes and furnishings.</p>
+                    <div class="project-tags">
+                        <span class="tag">AutoCAD</span>
+                        <span class="tag">Residential</span>
+                        <span class="tag">Supernova N510-4</span>
+                    </div>
+                    <div class="project-footer">
+                        <button class="btn btn-primary" onclick="openModal('modal-bedroom')">Read Concept &amp; Specs</button>
+                        <a href="Interior design.pdf" target="_blank" rel="noopener" class="btn btn-outline">View Full PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Harbour Side Restaurant Concept -->
+            <div class="project-card">
+                <div class="project-header-banner">
+                    <h3>Harbour Side Restaurant Concept</h3>
+                    <span class="project-date">28/10/2026</span>
+                </div>
+                <div class="project-body">
+                    <p>Celebrates Lucayan heritage, early maritime history, and Junkanoo energy with woven textures, rope, brass, Bluebird Skies accents, a central feature piece, and a full dining, banquette, and bar AutoCAD layout.</p>
+                    <div class="project-tags">
+                        <span class="tag">AutoCAD</span>
+                        <span class="tag">Hospitality</span>
+                        <span class="tag">Junkanoo Heritage</span>
+                    </div>
+                    <div class="project-footer">
+                        <button class="btn btn-primary" onclick="openModal('modal-harbour')">Read Concept &amp; Specs</button>
+                        <a href="Interior design (1).pdf" target="_blank" rel="noopener" class="btn btn-outline">View Full PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume">
+        <h2 class="section-title">Resume</h2>
+        <p class="section-subtitle">Academic background, spatial drafting skills, and creative inspirations</p>
+
+        <div class="resume-container">
+            <div class="resume-header">
+                <h2>Kalila Roberts</h2>
+                <p style="color: var(--text-muted);">Nassau, The Bahamas • Aspiring BFA Interior Design Student</p>
+            </div>
+
+            <h3 class="resume-section-title">Education</h3>
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <span>St. John's College</span>
+                    <span>Expected Graduation: 2027</span>
+                </div>
+                <div class="resume-item-sub">Secondary Student (Age 16) • Target Degree: Bachelor of Fine Arts (BFA) in Interior Design</div>
+                <ul class="resume-list">
+                    <li>Completed residential and hospitality interior design concepts featuring floor plans, mood boards, finishes, fixtures, and furniture selections.</li>
+                </ul>
+            </div>
+
+            <h3 class="resume-section-title">Design &amp; Technical Skills</h3>
+            <div class="resume-item">
+                <ul class="resume-list">
+                    <li><strong>Spatial Drafting:</strong> AutoCAD floor plan layout and room zoning (residential primary suites and commercial restaurant plans).</li>
+                    <li><strong>Concept &amp; Material Curation:</strong> Mood board composition, color palettes, wall paint specification (such as Supernova N510-4 and Bluebird Skies), floor/shower tile pairing, lighting fixtures, and FF&amp;E selection.</li>
+                    <li><strong>Cultural &amp; Narrative Storytelling:</strong> Translating Bahamian history, Junkanoo artistry, and tactile material contrasts into cohesive interiors.</li>
+                </ul>
+            </div>
+
+            <h3 class="resume-section-title">Creative Influences &amp; Focus</h3>
+            <div class="resume-item">
+                <ul class="resume-list">
+                    <li>Inspired by Junkanoo's rhythmic energy, bold colors, and resourceful craftsmanship, alongside family artwork encountered growing up.</li>
+                    <li>Driven by curiosity and creative inquiry ("what if" and "I wonder why") to pair expressive visual storytelling with functional space planning.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">Reach out regarding portfolio inquiries, design collaborations, or admissions</p>
+
+        <div class="contact-box">
+            <p>Have a question about Kalila's interior design concepts, AutoCAD plans, or BFA portfolio?</p>
+            <form class="contact-form" action="https://formsubmit.co/kerrjoshua272@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="New Portfolio Inquiry - Kalila Roberts">
+                <input type="hidden" name="_captcha" value="false">
+                <div class="form-group">
+                    <label for="senderName">Your Name</label>
+                    <input type="text" id="senderName" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="senderEmail">Email Address</label>
+                    <input type="email" id="senderEmail" name="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="senderMessage">Message</label>
+                    <textarea id="senderMessage" name="message" rows="4" placeholder="Write your message here..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="modal-bedroom">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-bedroom')">&times;</button>
+            <h3>My Ethereal Dream Bedroom</h3>
+            <p class="project-date">26/10/2026 • Residential Concept</p>
+
+            <h4 class="modal-section-heading">Concept Statement</h4>
+            <p style="color: var(--text-muted);">This bedroom is designed as an escape, a place where soft luxury meets calm beauty. Gentle, flowing drapery and bedding that feels like clouds wrap the space in comfort. Smooth metallic touches and warm light from fixtures add a touch of refinement. The color scheme stays soothing—plaster white, soft champagne, and subtle twilight tones work together to create a gentle backdrop. Handcrafted details bring a sense of creativity making the space feel personal and alive, shifting from a calming morning retreat to a cozy intimate nightscape.</p>
+
+            <h4 class="modal-section-heading">AutoCAD Floor Plan Zones</h4>
+            <ul class="modal-list">
+                <li>Primary bedroom with TV stand and dresser</li>
+                <li>Double hanging closet, single hanging closet, and closet dresser</li>
+                <li>En-suite bath with tub and shower</li>
+            </ul>
+
+            <h4 class="modal-section-heading">Finishes, Fixtures &amp; Furniture</h4>
+            <ul class="modal-list">
+                <li><strong>Finishes:</strong> Floor tiles, wall paint in <em>Supernova N510-4</em>, and shower tiles</li>
+                <li><strong>Fixtures:</strong> Ceiling fan, bathroom chandelier, bathtub &amp; shelf, bathroom cupboard and sink, toilet room, built-in closet shelf, built-in shelf, bedside lamps, shower, bathroom mirror, and recessed lights</li>
+                <li><strong>Furniture &amp; Fabrics:</strong> Closet dresser, bed frame, vanity set, vanity chair, room dresser, lounge chair, bedding, closet rug, bedroom rug, and bathroom rug</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-harbour">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-harbour')">&times;</button>
+            <h3>Harbour Side Restaurant Concept</h3>
+            <p class="project-date">28/10/2026 • Hospitality Concept</p>
+
+            <h4 class="modal-section-heading">Concept Statement</h4>
+            <p style="color: var(--text-muted);">Rich historical lineage and vibrant cultural expression come together in a restaurant influenced by Junkanoo, Bahamian culture, and history. The design honors Lucayan heritage through hand-woven straw, smooth coral stone, and limestone, balances the Age of Piracy and early shipbuilding with coarse rope, tarnished/dull brass and metals, and weathered driftwood, and channels Junkanoo and Kalik energy with ocean blues, sunlight golds, carnival hues, bold geometric patterns, and oversized lighting inspired by Junkanoo banners and headpieces.</p>
+
+            <h4 class="modal-section-heading">AutoCAD Floor Plan Zones</h4>
+            <ul class="modal-list">
+                <li>Entry, waiting area benches, host stand, and central feature piece</li>
+                <li>Main dining area, banquette seating, and bar tops</li>
+                <li>Bar, back of house, kitchen, windows, plants, and deck</li>
+            </ul>
+
+            <h4 class="modal-section-heading">Feature Piece, Finishes &amp; Furniture</h4>
+            <ul class="modal-list">
+                <li><strong>Focal Element:</strong> Junkanoo-inspired feature piece</li>
+                <li><strong>Finishes &amp; Fixtures:</strong> Lighting fixture, interior/exterior paint including <em>Bluebird Skies</em>, bar counter, bar backsplash, and floor tile color</li>
+                <li><strong>Furniture &amp; Fabrics:</strong> Dining chair, dining table, booth seating, high top table, bar/high top chairs, and Bahamian patterned fabrics for chair/booth cushions and upholstery</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>Kalila Roberts • Interior Design Portfolio • Nassau, The Bahamas</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const current = body.getAttribute('data-theme');
+            body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+        }
+
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+    </script>
+</body>
+</html>
